@@ -4,3 +4,4 @@ sudo apt install build-essential libbz2-dev libdb-dev libreadline-dev libffi-dev
 sudo apt install python3-pip
 sudo pip install requests
 sudo pip install dearpygui
+python main.py
