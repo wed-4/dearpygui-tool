@@ -12,3 +12,34 @@ python 3.10
 
 ## 使用ライブラリ（予定）
 
+ - dearpygui
+ - reportlab
+ - Flask
+ - Flask-SQLAlchemy
+ - socket
+ - requests
+
+## 機能（予定）
+
+ - Dos攻撃
+ - ポートスキャン
+ - リバースシェル
+ - 動画プレイヤー
+ - Discordウェブフックツール
+ - DLLインジェクション
+ - 画像ビューワ
+ - テキストエディタ
+ - PDFレポート作成
+
+## 警告
+
+必ず、学習目的や実験目的にのみ使用してください。
+
+## 実行方法
+
+    git clone https://github.com/wed-4/dearpygui-tool.git
+    cd dearpygui-tool
+    python main.py
+
+以上のように実行してください。
+gitを持っていない方は<Download ZIP>からzipファイルとしてダウンロードし、適当な場所に解凍してください。
