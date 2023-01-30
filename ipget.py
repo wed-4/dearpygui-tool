@@ -4,6 +4,8 @@ from urllib.parse import urlparse
 import os
 import base64
 import configparser
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4, portrait
 
 
 def get_gip_addr():
@@ -28,3 +30,8 @@ def imageinput():
     config.read('image.ini')
     imagepath = config['IMAGE']['PATH']
     return imagepath
+
+def dllfile():
+    configb = configparser.ConfigParser()
+    configb.read('image.ini')
+    return configb['DLL']['DLLPATH']

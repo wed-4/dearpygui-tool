@@ -1,11 +1,26 @@
+import os
+
 import dearpygui.dearpygui as dpg
+from reportlab.lib.pagesizes import portrait, A4
+from reportlab.pdfgen import canvas
+from pyinjector import inject
 import ipget
-from PIL import Image
+import cv2
 
 
 def imgshow(self):
-    imgPIL = Image.open(ipget.imageinput())
-    imgPIL.show()
+    img = cv2.imread(ipget.imageinput())
+    cv2.imshow("Image", img)
+    cv2.waitKey()
+
+def reportmake():
+    file = "sample.pdf"
+    file_path = os.path.expanduser("~") + "/Desktop/" + file
+    page = canvas.Canvas(file_path, pagesize=portrait(A4))
+    page.save()
+
+def injectdll():
+    inject(int(dpg.get_value('pid')), str(ipget.dllfile()))
 
 
 dpg.create_context()
@@ -19,11 +34,20 @@ with dpg.font_registry():
 
 with dpg.window(label="追加", collapsed=False, no_close=True):
     dpg.add_text("PDFレポート作成")
-    dpg.add_button("画像を確認", callback=imgshow)
+    dpg.add_input_text(label="名前", tag="name")
+    dpg.add_button(label="顔写真を確認", callback=imgshow)
+    dpg.add_input_int(label="年齢", default_value=15, max_value=100, tag="age")
+    dpg.add_input_text(label="電話番号", tag="ph")
+    dpg.add_button(label="作成", callback=reportmake)
+
 
 with dpg.window(label="貴方の情報", collapsed=False, no_close=True):
     dpg.add_text("グローバルIPアドレス:" + ipget.get_gip_addr())
     dpg.add_text("コンピュータ名:" + ipget.get_host())
+
+with dpg.window(label="dllインジェクション", collapsed=False, no_close=True):
+    dpg.add_input_int(label="PID", tag="pid")
+    dpg.add_button(label="実行", callback=injectdll)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
