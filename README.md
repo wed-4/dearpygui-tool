@@ -35,7 +35,7 @@ python 3.10
 
 **必ず、学習目的や実験目的にのみ使用してください。**
 
-**Be sure to use this program for learning and experimental purposes only. **
+**Be sure to use this program for learning and experimental purposes only.**
 
 **Всегда используйте его только в учебных и экспериментальных целях.**
 
