@@ -33,9 +33,13 @@ python 3.10
 
 ## 警告
 
-**必ず、学習目的や実験目的にのみ使用してください。作者はこのプログラムの用途について干渉しません。**
+**必ず、学習目的や実験目的にのみ使用してください。**
 
-**Be sure to use this program for learning and experimental purposes only. The author will not interfere with the use of this program.**
+**Be sure to use this program for learning and experimental purposes only. **
+
+**Всегда используйте его только в учебных и экспериментальных целях.**
+
+**始终只用于学习和实验的目的。**
 
 ## 実行方法
 
