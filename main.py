@@ -1,26 +1,47 @@
-import os
 
 import dearpygui.dearpygui as dpg
-from reportlab.lib.pagesizes import portrait, A4
-from reportlab.pdfgen import canvas
 from pyinjector import inject
 import ipget
-import cv2
+import requests
+import re
+import threading
+import servertool
+def grab():
+    username = dpg.get_value("username")
+    response1 = requests.get(f"https://fortnitetracker.com/profile/all/{username}/events")
+
+    match1 = re.search(r'"accountId":\s*"([^"]+)"', response1.text)
+
+    player_name_regex = r'"playerName":\s*"([^"]+)"'
+    match_player_name1 = re.search(player_name_regex, response1.text)
+
+    if (match1 and match_player_name1):
+        account_id = match1.group(1)
+        player_name = match_player_name1.group(1)
+        print(f"アカウントID: {account_id}")
+        print(f"ユーザー名: {player_name}")
+    else:
+        print("IDが見つかりません")
 
 
-def imgshow(self):
-    img = cv2.imread(ipget.imageinput())
-    cv2.imshow("Image", img)
-    cv2.waitKey()
-
-def reportmake():
-    file = "sample.pdf"
-    file_path = os.path.expanduser("~") + "/Desktop/" + file
-    page = canvas.Canvas(file_path, pagesize=portrait(A4))
-    page.save()
-
-def injectdll():
+def injectdll(self):
     inject(int(dpg.get_value('pid')), str(ipget.dllfile()))
+
+
+class MyThread(threading.Thread):
+    def __init__(self, n):
+        super(MyThread, self).__init__()
+        self.n = n
+
+    def run(self):
+        servertool.serversys(dpg.get_value("port"))
+
+
+
+
+def serverrungo():
+    t1 = MyThread("t1")
+    t1.start()
 
 
 dpg.create_context()
@@ -32,15 +53,6 @@ with dpg.font_registry():
     with dpg.font(file="./resources/NotoSansJP-Bold.otf", size=14) as small_font:
         dpg.add_font_range_hint(dpg.mvFontRangeHint_Japanese)
 
-with dpg.window(label="追加", collapsed=False, no_close=True):
-    dpg.add_text("PDFレポート作成")
-    dpg.add_input_text(label="名前", tag="name")
-    dpg.add_button(label="顔写真を確認", callback=imgshow)
-    dpg.add_input_int(label="年齢", default_value=15, max_value=100, tag="age")
-    dpg.add_input_text(label="電話番号", tag="ph")
-    dpg.add_button(label="作成", callback=reportmake)
-
-
 with dpg.window(label="貴方の情報", collapsed=False, no_close=True):
     dpg.add_text("グローバルIPアドレス:" + ipget.get_gip_addr())
     dpg.add_text("コンピュータ名:" + ipget.get_host())
@@ -48,6 +60,14 @@ with dpg.window(label="貴方の情報", collapsed=False, no_close=True):
 with dpg.window(label="dllインジェクション", collapsed=False, no_close=True):
     dpg.add_input_int(label="PID", tag="pid")
     dpg.add_button(label="実行", callback=injectdll)
+
+with dpg.window(label="Fortnite ID Grabber", collapsed=False, no_close=True):
+    dpg.add_input_text(label="ユーザー名", tag="username")
+    dpg.add_button(label="取得", callback=grab)
+
+with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=True):
+    dpg.add_input_int(label="ポート", tag="port")
+    dpg.add_button(label="起動", callback=serverrungo)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
