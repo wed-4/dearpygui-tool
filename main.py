@@ -9,6 +9,7 @@ import servertool
 
 def spamming():
     ipget.spam(dpg.get_value("msg"), dpg.get_value("webhook"))
+
 def grab():
     username = dpg.get_value("username")
     response1 = requests.get(f"https://fortnitetracker.com/profile/all/{username}/events")
