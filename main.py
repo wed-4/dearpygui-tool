@@ -6,6 +6,9 @@ import requests
 import re
 import threading
 import servertool
+
+def spamming():
+    ipget.spam(dpg.get_value("msg"), dpg.get_value("webhook"))
 def grab():
     username = dpg.get_value("username")
     response1 = requests.get(f"https://fortnitetracker.com/profile/all/{username}/events")
@@ -68,6 +71,11 @@ with dpg.window(label="Fortnite ID Grabber", collapsed=False, no_close=True):
 with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=True):
     dpg.add_input_int(label="ポート", tag="port")
     dpg.add_button(label="起動", callback=serverrungo)
+
+with dpg.window(label="discord spammer", collapsed=False, no_close=True):
+    dpg.add_input_text(label="ウェブフックURL", tag="webhook")
+    dpg.add_input_text(label="メッセージ", tag="msg", multiline=True)
+    dpg.add_button(label="送信", callback=spamming)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
