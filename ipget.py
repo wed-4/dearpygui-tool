@@ -10,6 +10,7 @@ import re
 import ctypes
 
 
+
 def get_gip_addr():
     res = requests.get('https://ifconfig.me')
     return res.text
@@ -45,13 +46,15 @@ def get_cpu_usage():
     return cpu_percent
 
 
-def spam(msg, webhook):
+def spam(webhook, jsonfile):
     while True:
         try:
-            data = requests.post(webhook, json={'content': msg})
+            data = requests.post(webhook, json=jsonfile)
             if data.status_code == 204:
-                print(f"Sent MSG {msg}")
+                print(f"Send successfully!")
         except:
             print("Bad Webhook :" + webhook)
             time.sleep(5)
             exit()
+
+

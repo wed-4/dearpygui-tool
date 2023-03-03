@@ -1,4 +1,3 @@
-
 import dearpygui.dearpygui as dpg
 from pyinjector import inject
 import ipget
@@ -6,9 +5,12 @@ import requests
 import re
 import threading
 import servertool
+import cbg
+
 
 def spamming():
-    ipget.spam(dpg.get_value("msg"), dpg.get_value("webhook"))
+    ipget.spam(dpg.get_value("webhook"), cbg.jsonread())
+
 
 def grab():
     username = dpg.get_value("username")
@@ -41,11 +43,22 @@ class MyThread(threading.Thread):
         servertool.serversys(dpg.get_value("port"))
 
 
+class Mythread1(threading.Thread):
+    def __init__(self, n):
+        super(Mythread1, self).__init__()
+        self.n = n
+
+    def run(self):
+        cbg.codeeditoropen()
 
 
 def serverrungo():
     t1 = MyThread("t1")
     t1.start()
+
+def openide():
+    t2 = Mythread1("t2")
+    t2.start()
 
 
 dpg.create_context()
@@ -75,7 +88,7 @@ with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=T
 
 with dpg.window(label="discord spammer", collapsed=False, no_close=True):
     dpg.add_input_text(label="ウェブフックURL", tag="webhook")
-    dpg.add_input_text(label="メッセージ", tag="msg", multiline=True)
+    dpg.add_button(label="jsonファイルを作成", callback=openide)
     dpg.add_button(label="送信", callback=spamming)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
