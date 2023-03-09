@@ -9,7 +9,7 @@ import cbg
 
 
 def spamming():
-    ipget.spam(dpg.get_value("webhook"), cbg.jsonread())
+    ipget.spam(dpg.get_value("webhook"), dpg.get_value("msg"))
 
 
 def grab():
@@ -30,7 +30,7 @@ def grab():
         print("IDが見つかりません")
 
 
-def injectdll(self):
+def injectdll():
     inject(int(dpg.get_value('pid')), str(ipget.dllfile()))
 
 
@@ -55,6 +55,7 @@ class Mythread1(threading.Thread):
 def serverrungo():
     t1 = MyThread("t1")
     t1.start()
+
 
 def openide():
     t2 = Mythread1("t2")
@@ -88,7 +89,7 @@ with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=T
 
 with dpg.window(label="discord spammer", collapsed=False, no_close=True):
     dpg.add_input_text(label="ウェブフックURL", tag="webhook")
-    dpg.add_button(label="jsonファイルを作成", callback=openide)
+    dpg.add_input_text(label="メッセージ", tag="msg")
     dpg.add_button(label="送信", callback=spamming)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)

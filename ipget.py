@@ -1,14 +1,10 @@
-import time
-import requests
-import socket
-from urllib.parse import urlparse
-import os
-import base64
 import configparser
-import psutil
-import re
-import ctypes
+import socket
+import time
+from urllib.parse import urlparse
 
+import psutil
+import requests
 
 
 def get_gip_addr():
@@ -46,10 +42,10 @@ def get_cpu_usage():
     return cpu_percent
 
 
-def spam(webhook, jsonfile):
+def spam(webhook, msg):
     while True:
         try:
-            data = requests.post(webhook, json=jsonfile)
+            data = requests.post(webhook, json={'content': msg})
             if data.status_code == 204:
                 print(f"Send successfully!")
         except:
