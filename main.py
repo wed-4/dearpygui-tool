@@ -9,7 +9,7 @@ import cbg
 
 
 def spamming():
-    ipget.spam(dpg.get_value("webhook"), dpg.get_value("msg"))
+    ipget.spam(dpg.get_value("webhook"), dpg.get_value("fp"))
 
 
 def grab():
@@ -87,9 +87,9 @@ with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=T
     dpg.add_input_int(label="ポート", tag="port")
     dpg.add_button(label="起動", callback=serverrungo)
 
-with dpg.window(label="discord spammer", collapsed=False, no_close=True):
+with dpg.window(label="discord crash video spammer", collapsed=False, no_close=True):
     dpg.add_input_text(label="ウェブフックURL", tag="webhook")
-    dpg.add_input_text(label="メッセージ", tag="msg")
+    dpg.add_input_text(label="メッセージ", tag="fp")
     dpg.add_button(label="送信", callback=spamming)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
