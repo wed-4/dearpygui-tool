@@ -2,6 +2,7 @@ import configparser
 import socket
 import time
 from urllib.parse import urlparse
+import requests
 
 import psutil
 import requests

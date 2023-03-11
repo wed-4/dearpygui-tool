@@ -87,7 +87,7 @@ with dpg.window(label="簡易ウェブサーバー", collapsed=False, no_close=T
     dpg.add_input_int(label="ポート", tag="port")
     dpg.add_button(label="起動", callback=serverrungo)
 
-with dpg.window(label="discord crash gif spammer", collapsed=False, no_close=True):
+with dpg.window(label="discord message spammer", collapsed=False, no_close=True):
     dpg.add_input_text(label="ウェブフックURL", tag="webhook")
     dpg.add_input_text(label="メッセージ", tag="fp")
     dpg.add_button(label="送信", callback=spamming)
