@@ -6,6 +6,7 @@ import re
 import threading
 import servertool
 import cbg
+from guildedjoiner import Exploit
 
 
 def spamming():
@@ -21,7 +22,7 @@ def grab():
     player_name_regex = r'"playerName":\s*"([^"]+)"'
     match_player_name1 = re.search(player_name_regex, response1.text)
 
-    if (match1 and match_player_name1):
+    if match1 and match_player_name1:
         account_id = match1.group(1)
         player_name = match_player_name1.group(1)
         print(f"アカウントID: {account_id}")
@@ -62,6 +63,12 @@ def openide():
     t2.start()
 
 
+def accountkill():
+    exploit = Exploit(dpg.get_value("token"))
+
+    exploit.execute()
+
+
 dpg.create_context()
 
 with dpg.font_registry():
@@ -91,6 +98,10 @@ with dpg.window(label="discord message spammer", collapsed=False, no_close=True)
     dpg.add_input_text(label="ウェブフックURL", tag="webhook")
     dpg.add_input_text(label="メッセージ", tag="fp")
     dpg.add_button(label="送信", callback=spamming)
+
+with dpg.window(label="discord account disabler", collapsed=False, no_close=True):
+    dpg.add_input_text(label="トークン", tag="token")
+    dpg.add_button(label="実行", callback=accountkill)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
