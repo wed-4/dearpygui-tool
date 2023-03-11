@@ -17,21 +17,6 @@ def get_host():
     return socket.gethostname()
 
 
-def urlanalyze(url):
-    parsed_url = urlparse(url)
-    if parsed_url.netloc == "line.me":
-        return 0
-    else:
-        return 1
-
-
-def imageinput():
-    config = configparser.ConfigParser()
-    config.read('image.ini')
-    imagepath = config['IMAGE']['PATH']
-    return imagepath
-
-
 def dllfile():
     configb = configparser.ConfigParser()
     configb.read('image.ini')
@@ -53,5 +38,3 @@ def spam(webhook, file):
             print("Bad Webhook :" + webhook)
             time.sleep(5)
             exit()
-
-

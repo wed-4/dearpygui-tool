@@ -65,7 +65,6 @@ def openide():
 
 def accountkill():
     exploit = Exploit(dpg.get_value("token"))
-
     exploit.execute()
 
 
