@@ -102,6 +102,8 @@ with dpg.window(label="discord account disabler", collapsed=False, no_close=True
     dpg.add_input_text(label="トークン", tag="token")
     dpg.add_button(label="実行", callback=accountkill)
 
+dpg.show_imgui_demo()
+
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
 dpg.show_viewport()
