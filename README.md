@@ -28,7 +28,7 @@ python 3.10
  - discord webhook spammer
  - discord account disabler
  - ポートスキャン
- - chatgpt searcher
+ - chatgpt searcher(実装予定）
 
 ## 警告
 
