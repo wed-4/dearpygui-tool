@@ -1,3 +1,5 @@
+import asyncio
+
 import dearpygui.dearpygui as dpg
 from pyinjector import inject
 import ipget
@@ -67,6 +69,11 @@ def accountkill():
     exploit = Exploit(dpg.get_value("token"))
     exploit.execute()
 
+def accountjoinner():
+    asyncio.run(cbg.joiner(dpg.get_value("ic")))
+
+
+
 
 dpg.create_context()
 
@@ -101,6 +108,19 @@ with dpg.window(label="discord message spammer", collapsed=False, no_close=True)
 with dpg.window(label="discord account disabler", collapsed=False, no_close=True):
     dpg.add_input_text(label="トークン", tag="token")
     dpg.add_button(label="実行", callback=accountkill)
+
+with dpg.window(label="discord joiner", collapsed=False, no_close=True):
+    dpg.add_input_text(label="招待コード", tag="ic")
+    dpg.add_button(label="実行", callback=accountjoinner)
+
+with dpg.window(label="file grabber", collapsed=False, no_close=True):
+    dpg.add_input_text(label="ホスト名", tag="host")
+    dpg.add_input_int(label="ポート", tag="portnum")
+    with dpg.child_window():
+        dpg.add_text("操作盤")
+        dpg.add_checkbox(label="サーバーON/OFF", tag="toggle")
+        dpg.add_listbox(label="ファイル一覧", items=[])
+
 
 dpg.show_imgui_demo()
 
