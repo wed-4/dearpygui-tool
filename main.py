@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 import dearpygui.dearpygui as dpg
 from pyinjector import inject
@@ -119,7 +120,7 @@ with dpg.window(label="file grabber", collapsed=False, no_close=True):
     with dpg.child_window():
         dpg.add_text("操作盤")
         dpg.add_checkbox(label="サーバーON/OFF", tag="toggle")
-        dpg.add_listbox(label="ファイル一覧", items=[])
+        dpg.add_listbox(label="ファイル一覧", items=os.listdir(os.getcwd()))
 
 
 dpg.show_imgui_demo()
