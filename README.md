@@ -27,8 +27,8 @@ python 3.10
  - discord joiner
  - discord webhook spammer
  - discord account disabler
- - ポートスキャン
- - chatgpt searcher(実装予定）
+ - ポートスキャン（実装予定）
+ - file grabber（実装予定）
 
 ## 警告
 
