@@ -48,3 +48,8 @@ python 3.10
 
 以上のように実行してください。
 gitを持っていない方は「Download ZIP」からzipファイルとしてダウンロードし、適当な場所に解凍してください。
+
+
+## 実装予定
+
+ - file grabberの実装。[これ](https://github.com/FZGbzuw412/Python-RAT/blob/main/server.py)が参考になるかもしれない。
