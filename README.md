@@ -27,8 +27,8 @@ python 3.10
  - discord joiner
  - discord webhook spammer
  - discord account disabler
- - ポートスキャン
- - chatgpt searcher(実装予定）
+ - ポートスキャン（実装予定）
+ - file grabber（実装予定）
 
 ## 警告
 
@@ -48,3 +48,10 @@ python 3.10
 
 以上のように実行してください。
 gitを持っていない方は「Download ZIP」からzipファイルとしてダウンロードし、適当な場所に解凍してください。
+(windows専用なのに何故にbashを使ったのだろう・・・）
+
+
+## 実装予定
+
+ - file grabberの実装。[これ](https://github.com/FZGbzuw412/Python-RAT/blob/main/server.py)が参考になるかもしれない。
+
