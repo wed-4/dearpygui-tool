@@ -122,9 +122,6 @@ with dpg.window(label="file grabber", collapsed=False, no_close=True):
         dpg.add_checkbox(label="サーバーON/OFF", tag="toggle")
         dpg.add_listbox(label="ファイル一覧", items=os.listdir(os.getcwd()))
 
-
-dpg.show_imgui_demo()
-
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()
 dpg.show_viewport()
