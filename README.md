@@ -53,5 +53,5 @@ gitを持っていない方は「Download ZIP」からzipファイルとして�
 
 ## 実装予定
 
- - file grabberの実装。[これ](https://github.com/FZGbzuw412/Python-RAT/blob/main/server.py)が参考になるかもしれない。
+ - file の実装。[これ](https://github.com/FZGbzuw412/Python-RAT/blob/main/server.py)が参考になるかもしれない。
 
