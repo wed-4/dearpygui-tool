@@ -1,13 +1,13 @@
 
+import asyncio
 import configparser
 import json
 import tkinter as tk
 from tkinter import ttk
-from tkcode import CodeEditor
+
 import aiohttp
-import asyncio
 from aioconsole import aprint
-import ssl
+from tkcode import CodeEditor
 
 
 def codeeditoropen():
