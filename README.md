@@ -42,16 +42,12 @@ python 3.10
 
 ## 実行方法
 
-    git clone https://github.com/wed-4/dearpygui-tool.git
-    cd dearpygui-tool
-    python main.py
-
-以上のように実行してください。
+start.batを実行するだけです。（python3.10をインストールしておいてください）
 gitを持っていない方は「Download ZIP」からzipファイルとしてダウンロードし、適当な場所に解凍してください。
-(windows専用なのに何故にbashを使ったのだろう・・・）
+
 
 
 ## 実装予定
 
- - file grabberの実装。[これ](https://github.com/FZGbzuw412/Python-RAT/blob/main/server.py)が参考になるかもしれない。
+ - SSHボットネットの実装。[これ](https://github.com/Hodaifa98/SSH-BotNet-Python-PyQt5)が参考になるかもしれない。
 
