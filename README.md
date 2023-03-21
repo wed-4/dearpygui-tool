@@ -27,6 +27,7 @@ python 3.10
  - discord joiner
  - discord webhook spammer
  - discord account disabler
+ - リバースシェル
  - ポートスキャン（実装予定）
  - file grabber（実装予定）
 
