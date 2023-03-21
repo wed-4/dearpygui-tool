@@ -14,9 +14,7 @@ python 3.10
 
  - dearpygui
  - pyinjector
- - openai
  - socket
- - nukelib
  - requests
 
 ## 機能（予定）
