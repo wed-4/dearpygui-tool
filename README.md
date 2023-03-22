@@ -14,9 +14,7 @@ python 3.10
 
  - dearpygui
  - pyinjector
- - openai
  - socket
- - nukelib
  - requests
 
 ## 機能（予定）
@@ -27,6 +25,7 @@ python 3.10
  - discord joiner
  - discord webhook spammer
  - discord account disabler
+ - リバースシェル
  - ポートスキャン（実装予定）
  - file grabber（実装予定）
 
