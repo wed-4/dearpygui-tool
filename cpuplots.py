@@ -1,7 +1,5 @@
-import os
-import shutil
-from socket import socket
 import threading
+from socket import socket
 
 
 def handle_client(client_socket):
