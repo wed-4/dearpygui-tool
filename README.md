@@ -49,4 +49,4 @@ gitを持っていない方は「Download ZIP」からzipファイルとして�
 ## 実装予定
 
  - SSHボットネットの実装。[これ](https://github.com/Hodaifa98/SSH-BotNet-Python-PyQt5)が参考になるかもしれない。
-
+ - リバースシェルでランサムウェアを起動できるようにする。
